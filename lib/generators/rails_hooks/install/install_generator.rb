@@ -1,10 +1,10 @@
-module SolidusHooks
+module RailsHooks
   module Generators
     class InstallGenerator < Rails::Generators::Base
       class_option :auto_run_migrations, type: :boolean, default: false
 
       def add_migrations
-        run 'bundle exec rake railties:install:migrations FROM=solidus_hooks'
+        run 'bundle exec rake railties:install:migrations FROM=rails_hooks'
       end
 
       def run_migrations

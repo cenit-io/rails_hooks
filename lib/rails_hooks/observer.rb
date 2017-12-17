@@ -1,7 +1,7 @@
 
-require 'solidus_hooks/observer/version'
+require 'rails_hooks/observer/version'
 
-module SolidusHooks
+module RailsHooks
   module Observer
     extend ActiveSupport::Concern
 
@@ -53,7 +53,7 @@ module SolidusHooks
     module ClassMethods
 
       def observer_events
-        SolidusHooks::Observer::Event.where(target_name: to_s)
+        RailsHooks::Observer::Event.where(target_name: to_s)
       end
     end
 

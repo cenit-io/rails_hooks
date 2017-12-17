@@ -1,15 +1,15 @@
-SolidusHooks
+RailsHooks
 
 ## Installation
 
 Add to `Gemfile`:
 ```ruby
-gem 'solidus_hooks', github: 'cenit-io/solidus_hooks'
+gem 'rails_hooks', github: 'cenit-io/rails_hooks'
 ```
 
 Run:
 ```sh
-$ bundle && bundle exec rails g solidus_hooks:install
+$ bundle && bundle exec rails g rails_hooks:install
 ```
 
 -----------------

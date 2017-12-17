@@ -16,6 +16,6 @@ end
 
 desc 'Generates a dummy app for testing'
 task :test_app do
-  ENV['LIB_NAME'] = 'solidus_hooks'
+  ENV['LIB_NAME'] = 'rails_hooks'
   Rake::Task['common:test_app'].invoke
 end

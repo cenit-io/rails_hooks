@@ -6,7 +6,7 @@ require 'rails_hooks/version'
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'rails_hooks'
-  s.version     = SolidusHooks.version
+  s.version     = RailsHooks.version
   s.summary     = 'Two engines, one to handle events, under the Observer module and another to perform notifications, under the Hooks module'
   s.description = s.summary
   s.required_ruby_version = '>= 2.1.0'

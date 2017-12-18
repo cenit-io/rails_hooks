@@ -1,4 +1,4 @@
-module SolidusHooks
+module RailsHooks
   module Hooks
     class WebHook < ApplicationRecord
       has_many :events, as: :eventable, dependent: :destroy

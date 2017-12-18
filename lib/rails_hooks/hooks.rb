@@ -1,5 +1,3 @@
-require 'rails_hooks/hooks/version'
-require 'rails_hooks/observer/event'
 module RailsHooks
   module Hooks
     def self.table_name_prefix

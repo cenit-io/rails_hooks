@@ -1,10 +1,10 @@
-module SolidusHooks
+module RailsHooks
   module Observer
     class EventDependency < ApplicationRecord
 
-      belongs_to :event, class_name: SolidusHooks::Observer::Event.to_s, inverse_of: :event_dependencies, dependent: :destroy
+      belongs_to :event, class_name: RailsHooks::Observer::Event.to_s, inverse_of: :event_dependencies, dependent: :destroy
 
-      belongs_to :dependent_event, class_name: SolidusHooks::Observer::Event.to_s, inverse_of: nil
+      belongs_to :dependent_event, class_name: RailsHooks::Observer::Event.to_s, inverse_of: nil
 
       def trigger_on(event_source)
         if dependent_event

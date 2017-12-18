@@ -1,22 +1,22 @@
-module SolidusHooks
+module RailsHooks
   module Observer
-    class Event < ApplicationRecord
+    class Event < ActiveRecord::Base
       belongs_to :eventable, polymorphic: true
 
       serialize :triggers
       before_destroy :destroy_event_dependencies
-      has_many :event_dependencies, class_name: SolidusHooks::Observer::EventDependency.to_s, inverse_of: :event
+      has_many :event_dependencies, class_name: RailsHooks::Observer::EventDependency.to_s, inverse_of: :event
 
       before_save :check_triggers
 
       after_save :store_sub_events
 
       def dependent_events
-        SolidusHooks::Observer::EventDependency.where(dependent_event_id: self.id)
+        RailsHooks::Observer::EventDependency.where(dependent_event_id: self.id)
       end
 
       def hooks
-        SolidusHooks::Observer::Event.where(eventable_id: eventable_id).map(&:eventable).compact
+        self.class.where(eventable_id: eventable_id).map(&:eventable).compact
       end
 
       def destroy_event_dependencies
@@ -36,7 +36,7 @@ module SolidusHooks
               if (r = target_model.reflect_on_association(field))
                 if cond.is_a?(Hash)
                   if (sub_event = self.class.new(triggers: cond.deep_dup, target_name: r.klass)).valid?
-                    dependency = SolidusHooks::Observer::EventDependency.new(association_name: field)
+                    dependency = RailsHooks::Observer::EventDependency.new(association_name: field)
                     dependency.dependent_event = self
                     @sub_events[sub_event] = dependency
                   else

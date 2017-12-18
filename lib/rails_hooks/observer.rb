@@ -1,6 +1,3 @@
-
-require 'rails_hooks/observer/version'
-
 module RailsHooks
   module Observer
     extend ActiveSupport::Concern
